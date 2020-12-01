@@ -1,3 +1,4 @@
+'use strict';
 /*
 Dans l'HTML, créer un titre H1 "La réponse à toute question de l'univers est...".
 Dans le JS, au survol de ce titre h1, rajouter "42"
@@ -7,7 +8,7 @@ function changeText() {
     this.textContent += ' 42';
 }
 
-h1 = document.querySelector('h1');
+const h1 = document.querySelector('h1');
 h1.addEventListener('mouseover', changeText);
 
 // -----------------------
@@ -32,7 +33,6 @@ for(let i=0; i<meats.length;i++) {
 function getName(event) {
     console.log(event.target.textContent)  //permet de cibler le sous element sur lequel on clique
 }
-
 const meats = document.querySelector('.meats')
 meats.addEventListener('click', getName)
 
@@ -76,10 +76,13 @@ Créer un champ de formulaire qui demande un nom. Au clic du bouton "Envoyer"...
 Récupérer le contenu et afficher en alerte "Bonjour <Nom>!"
 */
 
-function alertName() {
-    const name = document.getElementById("name").value;
-    alert(`Bonjour ${name} !`)
+function alertName(event) {
+    //si on utilise pas alert :
+    event.preventDefault();
 
+    const name = document.querySelector("#name").value;
+    //alert(`Bonjour ${name} !`);
+    console.log(`Bonjour ${name} !`)
 }
 const submit = document.querySelector(".submit");
 submit.addEventListener('click', alertName);
